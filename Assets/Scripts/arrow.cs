@@ -21,6 +21,7 @@ public class arrow : MonoBehaviour
         {
             SoundScript.PlaySound("arrow");
             Destroy(gameObject);
+            ScoreScript.Score += 1;
         }
     }
 }
