@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 815590399898400360, guid: 7e6d5bfb09c6b3048bda138bb68346e3, type: 3}
   hpGauge: {fileID: 1245197637}
+  Catfood: {fileID: 5808154020336729057, guid: c22897a390543724a99e481d43a774d5, type: 3}
 --- !u!4 &2243255
 Transform:
   m_ObjectHideFlags: 0

@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     float span = 1.0f;
     float delta = 0;
     public GameObject hpGauge;
+    public GameObject Catfood;
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("GenerateArrow", 0, 1);
+        InvokeRepeating("Generatecatfood", 5, 5);
     }
 
     // Update is called once per frame
@@ -29,5 +31,28 @@ public class GameManager : MonoBehaviour
     public void DecreaseHp()
     {
         hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+    }
+    void GenerateArrow()
+    {
+        float px = Random.Range(-6.0f, 7.0f);
+        Instantiate(arrowPrefab, new Vector3(px, 7, 0), Quaternion.identity);
+    }
+    void GenerateCatfood()
+    {
+        float px = Random.Range(-6.0f, 7.0f);
+        Instantiate(Catfood, new Vector3(px, 7, 0), Quaternion.identity);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag=="Arrow")
+        {
+            GameManager.GetComponent<GameManager>().ChangHP(-0.1f);
+            PlayEffectSound(EffectSounds[1]);
+        }
+        else if(collision.gameObject.tag=="catfood")
+        {
+            GameManager.GetComponent<GameManager>().ChangHP(0.1f);
+            PlayEffectSound(EffectSounds[2]);
+        }
     }
 }
