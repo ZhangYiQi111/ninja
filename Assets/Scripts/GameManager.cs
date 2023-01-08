@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         delta += Time.deltaTime;
-        if(delta>span)
+        if (delta > span)
         {
             delta = 0;
             int px = Random.Range(-6, 7);
@@ -41,18 +41,5 @@ public class GameManager : MonoBehaviour
     {
         float px = Random.Range(-6.0f, 7.0f);
         Instantiate(Catfood, new Vector3(px, 7, 0), Quaternion.identity);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag=="Arrow")
-        {
-            GameManager.GetComponent<GameManager>().ChangHP(-0.1f);
-            PlayEffectSound(EffectSounds[1]);
-        }
-        else if(collision.gameObject.tag=="catfood")
-        {
-            GameManager.GetComponent<GameManager>().ChangHP(0.1f);
-            PlayEffectSound(EffectSounds[2]);
-        }
     }
 }
